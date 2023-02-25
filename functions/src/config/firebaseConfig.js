@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app'
+const { initializeApp, cert } = require('firebase-admin/app')
 
 const firebaseConfig = {
     "type": "service_account",
@@ -13,6 +13,6 @@ const firebaseConfig = {
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-2yjq4%40projeto-dmsa.iam.gserviceaccount.com"
 }
   
-const app = initializeApp(firebaseConfig)
+const app = initializeApp({credential: cert(firebaseConfig)})
 
 module.exports = app
